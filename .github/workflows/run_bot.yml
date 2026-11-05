@@ -1,0 +1,22 @@
+name: Run Job Bot
+on:
+  schedule:
+    - cron: '0 */2 * * *' # Körs automatiskt varannan timme
+  workflow_dispatch: # Gör att vi kan starta den manuellt för testkörning!
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout kod
+        uses: actions/checkout@v3
+      - name: Sätt upp Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Installera paket
+        run: pip install requests
+      - name: Kör skriptet
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python job_bot.py
