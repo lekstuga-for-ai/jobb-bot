@@ -16,7 +16,7 @@ ECONOMY_TERMS = ["ekonomi", "finans", "finance", "controller", "redovisning", "r
 
 def fetch_jobs():
     # Vi söker efter annonser publicerade de senaste 24 timmarna
-    url = "https://jobtechdev.se"
+    url = "https://jobsearch.api.jobtechdev.se/search"
     
     # Vi gör en bred sökning på "ekonomi" först för att inte missa något
     headers = {"accept": "application/json"}
